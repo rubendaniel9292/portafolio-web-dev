@@ -1,0 +1,91 @@
+---
+const projects = [
+    {
+        title: "E-commerce Platform",
+        description:
+            "Plataforma de comercio electrónico completa con React, Next.js y Stripe para pagos.",
+        image: "/ecommerce-platform-concept.png",
+        technologies: ["React", "Next.js", "Stripe", "PostgreSQL"],
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        title: "Task Management App",
+        description:
+            "Aplicación de gestión de tareas con autenticación, drag & drop y notificaciones en tiempo real.",
+        image: "/task-management-app-interface.png",
+        technologies: ["React", "Nest.js", "Socket.io", "MongoDB"],
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        title: "Weather Dashboard",
+        description:
+            "Dashboard del clima con geolocalización, pronósticos y visualización de datos interactiva.",
+        image: "/weather-dashboard.png",
+        technologies: ["TypeScript", "Chart.js", "Weather API", "Tailwind"],
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+];
+---
+
+<!-- Componente Proyectos -->
+<section id="proyectos" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12"
+            >
+                Mis Proyectos
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    projects.map((project, index) => (
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200">
+                            <div class="aspect-video overflow-hidden">
+                                <img
+                                    src={
+                                        project.image || "/placeholder.svg"
+                                    }
+                                    alt={project.title}
+                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                                    {project.title}
+                                </h3>
+                                <p class="text-gray-600 mb-4">
+                                    {project.description}
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    {project.technologies.map((tech) => (
+                                        <span class="px-2 py-1 bg-teal-500/10 text-teal-700 text-xs rounded-full font-medium">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                                <div class="flex gap-2">
+                                    <a 
+                                        href={project.liveUrl}
+                                        class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm font-medium transition-colors"
+                                    >
+                                        Ver proyecto
+                                    </a>
+                                    <a 
+                                        href={project.githubUrl}
+                                        class="px-4 py-2 border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors"
+                                    >
+                                        GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

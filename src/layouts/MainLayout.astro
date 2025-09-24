@@ -1,0 +1,104 @@
+---
+import NavBar from "../components/NavBar.jsx";
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <header>
+            <NavBar client:load />
+        </header>
+        <main>
+            <slot />
+        </main>
+
+    </body>
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Información personal */}
+            <div>
+              <h3 class="text-xl font-bold mb-4">Mi Portafolio</h3>
+              <p class="text-gray-400 mb-4">
+                Desarrollador Full Stack especializado en crear experiencias web modernas y funcionales.
+              </p>
+              <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                  <span  />
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                  <sapn  />
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                  <span  />
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                  <span  />
+                </a>
+              </div>
+            </div>
+
+            {/* Enlaces rápidos */}
+            <div>
+              <h3 class="text-xl font-bold mb-4">Enlaces rápidos</h3>
+              <ul class="space-y-2">
+                <li>
+                  <a href="#inicio" class="text-gray-400 hover:text-white transition-colors">
+                    Inicio
+                  </a>
+                </li>
+                <li>
+                  <a href="#sobre-mi" class="text-gray-400 hover:text-white transition-colors">
+                    Sobre mí
+                  </a>
+                </li>
+                <li>
+                  <a href="#habilidades" class="text-gray-400 hover:text-white transition-colors">
+                    Habilidades
+                  </a>
+                </li>
+                <li>
+                  <a href="#proyectos" class="text-gray-400 hover:text-white transition-colors">
+                    Proyectos
+                  </a>
+                </li>
+                <li>
+                  <a href="#contacto" class="text-gray-400 hover:text-white transition-colors">
+                    Contacto
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contacto */}
+            <div>
+              <h3 class="text-xl font-bold mb-4">Contacto</h3>
+              <div class="space-y-2 text-gray-400">
+                <p>tu.email@ejemplo.com</p>
+                <p>+1 (555) 123-4567</p>
+                <p>Tu Ciudad, País</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Mi Portafolio. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+</html>

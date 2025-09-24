@@ -1,0 +1,86 @@
+---
+const skills = [
+    { name: "React", category: "Frontend", icon: "⚛️" },
+    { name: "Next.js", category: "Frontend", icon: "▲" },
+    { name: "TypeScript", category: "Language", icon: "📘" },
+    { name: "JavaScript", category: "Language", icon: "🟨" },
+    { name: "Nest.js", category: "Backend", icon: "🐱" },
+    { name: "Node.js", category: "Backend", icon: "🟢" },
+    { name: "Git", category: "Tools", icon: "📝" },
+    { name: "GitHub", category: "Tools", icon: "🐙" },
+    { name: "Tailwind CSS", category: "Frontend", icon: "🎨" },
+    { name: "PostgreSQL", category: "Database", icon: "🐘" },
+    { name: "MongoDB", category: "Database", icon: "🍃" },
+    { name: "Docker", category: "DevOps", icon: "🐳" },
+];
+
+const categories = {
+    Frontend: skills.filter((skill) => skill.category === "Frontend"),
+    Backend: skills.filter((skill) => skill.category === "Backend"),
+    Language: skills.filter((skill) => skill.category === "Language"),
+    Tools: skills.filter((skill) => skill.category === "Tools"),
+    Database: skills.filter((skill) => skill.category === "Database"),
+    DevOps: skills.filter((skill) => skill.category === "DevOps"),
+};
+---
+
+<!-- Componente Habilidades -->
+
+<section
+    id="habilidades"
+    class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden"
+>
+    <div class="absolute inset-0 opacity-5">
+        <div
+            class="absolute top-20 right-10 w-48 h-48 bg-blue-500 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute bottom-10 left-20 w-36 h-36 bg-teal-500 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute top-1/3 left-1/3 w-28 h-28 bg-white rounded-full blur-2xl"
+        >
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-center text-white mb-4"
+            >
+                Habilidades y Tecnologías
+            </h2>
+
+            <p class="text-center text-gray-300 mb-12 text-lg">
+                Grilla de conocimientos y habilidades - React, Nest.js, Git y
+                GitHub
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    Object.entries(categories).map(
+                        ([category, categorySkills]) => (
+                            <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 shadow-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
+                                <h3 class="text-xl font-semibold text-white mb-4 text-center">
+                                    {category}
+                                </h3>
+                                <div class="flex flex-wrap gap-3 justify-center">
+                                    {categorySkills.map((skill) => (
+                                        <span class="bg-blue-500/20 text-white border border-blue-500/30 hover:bg-blue-500/30 transition-colors duration-200 text-sm py-2 px-4 rounded-full flex items-center gap-2">
+                                            <span class="text-base">
+                                                {skill.icon}
+                                            </span>
+                                            {skill.name}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ),
+                    )
+                }
+            </div>
+        </div>
+    </div>
+</section>
