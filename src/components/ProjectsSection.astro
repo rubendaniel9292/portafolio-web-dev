@@ -1,4 +1,6 @@
 ---
+import GitHubIcon from './icons/GitHub.astro';
+
 const projects = [
     {
         title: "E-commerce Platform",
@@ -76,8 +78,11 @@ const projects = [
                                     </a>
                                     <a 
                                         href={project.githubUrl}
-                                        class="px-4 py-2 border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors"
+                                        class="px-4 py-2 border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
                                     >
+                                        <div class="w-4 h-4">
+                                            <GitHubIcon />
+                                        </div>
                                         GitHub
                                     </a>
                                 </div>

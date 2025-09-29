@@ -1,3 +1,9 @@
+---
+import GitHubIcon from './icons/GitHub.astro';
+import LinkedInIcon from './icons/Linkedind.astro';
+import GitIcon from './icons/Git.astro';
+---
+
 <!-- Componente Contacto -->
 <section id="contacto" class="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center relative overflow-hidden">
       <!-- Efectos de fondo animados -->
@@ -57,22 +63,37 @@
                 <h4 class="text-lg font-semibold text-white mb-4">Sígueme en:</h4>
                 <div class="flex space-x-4">
                   <a
-                    href="#"
-                    class="w-10 h-10 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-200 hover:scale-110"
+                    href="https://linkedin.com/in/tu-perfil"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center border border-white/20 hover:bg-blue-600/20 hover:border-blue-500/40 transition-all duration-200 hover:scale-110"
+                    title="LinkedIn"
                   >
-                    <div class="text-white">🔗</div> 
+                    <div class="w-5 h-5 text-white">
+                      <LinkedInIcon />
+                    </div>
                   </a>
                   <a
-                    href="#"
-                    class="w-10 h-10 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-200 hover:scale-110"
+                    href="https://github.com/tu-usuario"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center border border-white/20 hover:bg-gray-600/20 hover:border-gray-500/40 transition-all duration-200 hover:scale-110"
+                    title="GitHub"
                   >
-                    <div class="text-white">💼</div>  
+                    <div class="w-5 h-5 text-white">
+                      <GitHubIcon />
+                    </div>
                   </a>
                   <a
-                    href="#"
-                    class="w-10 h-10 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-200 hover:scale-110"
+                    href="https://git.tu-servidor.com/tu-usuario"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center border border-white/20 hover:bg-orange-600/20 hover:border-orange-500/40 transition-all duration-200 hover:scale-110"
+                    title="Git Repository"
                   >
-                    <div class="text-white">🐙</div> 
+                    <div class="w-5 h-5 text-white">
+                      <GitIcon />
+                    </div>
                   </a>
                 </div>
               </div>

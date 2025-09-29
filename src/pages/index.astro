@@ -4,6 +4,8 @@ import AboutSection from "../components/AboutSection.astro";
 import SkillsSection from "../components/SkillsSection.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
 import ContactSection from "../components/ContactSection.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import LinkedInIcon from "../components/icons/Linkedind.astro";
 import "../styles/global.css";
 ---
 
@@ -24,11 +26,11 @@ import "../styles/global.css";
                     <div
                         class="w-72 h-72 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-teal-500 p-1 shadow-2xl"
                     >
-                        <div
-                            class="w-full h-full rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-lg font-medium"
-                        >
-                            MI FOTO PROFESIONAL
-                        </div>
+                        <img
+                            src="/images/fotoeditada.jpeg"
+                            alt="Daniel Ruben Rivas Saltos"
+                            class="w-full h-full rounded-full object-cover"
+                        />
                     </div>
                 </div>
 
@@ -48,9 +50,7 @@ import "../styles/global.css";
                 </p>
 
                 <!-- Botones de acción -->
-                <div
-                    class="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-                >
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                     <a
                         href="#proyectos"
                         class="bg-gray-900 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
@@ -68,30 +68,38 @@ import "../styles/global.css";
                 <!-- Enlaces sociales -->
                 <div class="flex justify-center space-x-6">
                     <a
-                        href="#"
-                        class="text-gray-300 hover:text-teal-400 transition-colors text-2xl"
+                        href="https://github.com/tu-usuario"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-gray-300 hover:text-teal-400 transition-colors w-8 h-8"
+                        title="GitHub"
                     >
+                        <GitHubIcon />
                     </a>
                     <a
-                        href="#"
-                        class="text-gray-300 hover:text-teal-400 transition-colors text-2xl"
+                        href="https://linkedin.com/in/tu-perfil"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-gray-300 hover:text-blue-400 transition-colors w-8 h-8"
+                        title="LinkedIn"
                     >
+                        <LinkedInIcon />
                     </a>
                     <a
-                        href="#"
+                        href="mailto:daniel.rivas@email.com"
                         class="text-gray-300 hover:text-teal-400 transition-colors text-2xl"
+                        title="Email"
                     >
+                        📧
                     </a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Importar componentes reutilizables -->
-    <AboutSection />
-    <SkillsSection />
-    <ProjectsSection />
-    <ContactSection />
 </MainLayout>
 
-
+<!-- Importar componentes reutilizables -->
+<AboutSection />
+<SkillsSection />
+<ProjectsSection />
+<ContactSection />
