@@ -22,6 +22,28 @@ html {
   --gray-800: #1f2937;
   --gray-900: #111827;
 
+  /* Tamaños de iconos */
+  --icon-size: 1.5rem; /* 24px - Tamaño base para iconos */
+  --icon-size-sm: 1rem; /* 16px - Iconos pequeños */
+  --icon-size-lg: 2rem; /* 32px - Iconos grandes */
+
+  /* Colores oficiales de marcas/tecnologías */
+  --color-react: #61DAFB;
+  --color-sass: #CC6699;
+  --color-bootstrap: #7952B3;
+  --color-typescript: #3178C6;
+  --color-javascript: #F7DF1E;
+  --color-nodejs: #39cc39;
+  --color-nestjs: #E0234E;
+  --color-git: #F05032;
+  --color-github: #181717;
+  --color-copilot: #000000;
+  --color-tailwind: #06B6D4;
+  --color-postgresql: #183853;
+  --color-typeorm: #FE0803;
+  --color-linkedin: #0A66C2;
+  --color-lodpdp: #FFD700;
+
   /* Tokens de diseño usando los colores del usuario */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -248,6 +270,112 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   color: #e5e7eb;
 }
+
+/* Clases para iconos con tamaños consistentes */
+.skill-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.skill-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor !important;
+}
+
+.skill-icon-sm {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.skill-icon-sm svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.skill-icon-sm svg *,
+.skill-icon-sm svg path,
+.skill-icon-sm svg circle,
+.skill-icon-sm svg rect,
+.skill-icon-sm svg polygon {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.skill-icon-sm svg [stroke="none"] {
+  stroke: none !important;
+}
+
+.skill-icon-sm svg [fill="none"] {
+  fill: none !important;
+}
+
+.skill-icon-lg {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.skill-icon-lg svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.skill-icon-lg svg *,
+.skill-icon-lg svg path,
+.skill-icon-lg svg circle,
+.skill-icon-lg svg rect,
+.skill-icon-lg svg polygon {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.skill-icon-lg svg [stroke="none"] {
+  stroke: none !important;
+}
+
+.skill-icon-lg svg [fill="none"] {
+  fill: none !important;
+}
+
+/* Colores específicos para cada tecnología/marca */
+.icon-react { color: var(--color-react); }
+.icon-sass { color: var(--color-sass); }
+.icon-bootstrap { color: var(--color-bootstrap); }
+.icon-typescript { color: var(--color-typescript); }
+.icon-javascript { color: var(--color-javascript); }
+.icon-nodejs { 
+  color: #4CAF50;  /* Verde más brillante para mejor visibilidad */
+}
+.icon-nestjs { color: var(--color-nestjs); }
+.icon-git { color: var(--color-git); }
+.icon-github { 
+  color: var(--color-github);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  padding: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.icon-copilot { color: var(--color-copilot); }
+.icon-tailwind { color: var(--color-tailwind); }
+.icon-postgresql { 
+  color: #336791;  /* Azul más contrastante para PostgreSQL */
+  background-color: rgba(255, 255, 255, 0.968);
+  border-radius: 3px;
+  padding: 1px;
+}
+.icon-typeorm { color: var(--color-typeorm); }
+.icon-linkedin { color: var(--color-linkedin); }
+.icon-lodpdp { color: var(--color-lodpdp); }
 
 /* Estilos para la sección inicio */
 .indexhome{

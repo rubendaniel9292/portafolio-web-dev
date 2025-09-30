@@ -1,17 +1,45 @@
 ---
+// Importar iconos
+import ReactIcon from './icons/React.astro';
+import SassIcon from './icons/Sass.astro';
+import BootstrapIcon from './icons/Bootstrap.astro';
+import TypeScriptIcon from './icons/TypeScript.astro';
+import JavaScriptIcon from './icons/JavaScritp.astro';
+import NodeIcon from './icons/Node.astro';
+import NestIcon from './icons/Nestjs.astro';
+import GitIcon from './icons/Git.astro';
+import GitHubIcon from './icons/GitHub.astro';
+import CopilotIcon from './icons/Copilot.astro';
+import TailwindIcon from './icons/Tailwind.astro';
+import PostgresIcon from './icons/Postgres.astro';
+import TypeORMIcon from './icons/TypeORM.astro';
+import LopdpIcon from './icons/Lopdp.astro';
+
 const skills = [
-    { name: "React", category: "Frontend", icon: "⚛️" },
-    { name: "Next.js", category: "Frontend", icon: "▲" },
-    { name: "TypeScript", category: "Language", icon: "📘" },
-    { name: "JavaScript", category: "Language", icon: "🟨" },
-    { name: "Nest.js", category: "Backend", icon: "🐱" },
-    { name: "Node.js", category: "Backend", icon: "🟢" },
-    { name: "Git", category: "Tools", icon: "📝" },
-    { name: "GitHub", category: "Tools", icon: "🐙" },
-    { name: "Tailwind CSS", category: "Frontend", icon: "🎨" },
-    { name: "PostgreSQL", category: "Database", icon: "🐘" },
-    { name: "MongoDB", category: "Database", icon: "🍃" },
-    { name: "Docker", category: "DevOps", icon: "🐳" },
+    { name: "React", category: "Frontend", iconComponent: ReactIcon, colorClass: "icon-react" },
+    { name: "SASS", category: "Frontend", iconComponent: SassIcon, colorClass: "icon-sass" },
+    { name: "Bootstrap", category: "Frontend", iconComponent: BootstrapIcon, colorClass: "icon-bootstrap" },
+    { name: "TypeScript", category: "Language", iconComponent: TypeScriptIcon, colorClass: "icon-typescript" },
+    { name: "JavaScript", category: "Language", iconComponent: JavaScriptIcon, colorClass: "icon-javascript" },
+
+    { name: "Node.js", category: "Backend", iconComponent: NodeIcon, colorClass: "icon-nodejs" },
+    { name: "Nest.js", category: "Backend", iconComponent: NestIcon, colorClass: "icon-nestjs" },
+    { name: "Git", category: "Tools", iconComponent: GitIcon, colorClass: "icon-git" },
+    { name: "GitHub", category: "Tools", iconComponent: GitHubIcon, colorClass: "icon-github" },
+    { name: "GitHub Copilot", category: "Tools", iconComponent: CopilotIcon, colorClass: "icon-copilot" },
+    { name: "Tailwind CSS", category: "Frontend", iconComponent: TailwindIcon, colorClass: "icon-tailwind" },
+    { name: "PostgreSQL", category: "Database", iconComponent: PostgresIcon, colorClass: "icon-postgresql" },
+    { name: "TypeORM", category: "Database", iconComponent: TypeORMIcon, colorClass: "icon-typeorm" },
+
+    {
+        name: "LODPDP",
+        fullName: "Ley Orgánica de Protección de Datos Personales",
+        description:
+            "Normativa ecuatoriana sobre protección de datos personales y privacidad digital",
+        category: "Otros",
+        iconComponent: LopdpIcon,
+        colorClass: "icon-lodpdp",
+    },
 ];
 
 const categories = {
@@ -20,12 +48,11 @@ const categories = {
     Language: skills.filter((skill) => skill.category === "Language"),
     Tools: skills.filter((skill) => skill.category === "Tools"),
     Database: skills.filter((skill) => skill.category === "Database"),
-    DevOps: skills.filter((skill) => skill.category === "DevOps"),
+    Otros: skills.filter((skill) => skill.category === "Otros"),
 };
 ---
 
 <!-- Componente Habilidades -->
-
 <section
     id="habilidades"
     class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden"
@@ -50,13 +77,8 @@ const categories = {
             <h2
                 class="text-3xl md:text-4xl font-bold text-center text-white mb-4"
             >
-                Habilidades y Tecnologías
+                Conocimientos y Tecnologías
             </h2>
-
-            <p class="text-center text-gray-300 mb-12 text-lg">
-                Grilla de conocimientos y habilidades - React, Nest.js, Git y
-                GitHub
-            </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
@@ -68,12 +90,30 @@ const categories = {
                                 </h3>
                                 <div class="flex flex-wrap gap-3 justify-center">
                                     {categorySkills.map((skill) => (
-                                        <span class="bg-blue-500/20 text-white border border-blue-500/30 hover:bg-blue-500/30 transition-colors duration-200 text-sm py-2 px-4 rounded-full flex items-center gap-2">
-                                            <span class="text-base">
-                                                {skill.icon}
-                                            </span>
-                                            {skill.name}
-                                        </span>
+                                        <div class="bg-blue-500/20 text-white border border-blue-500/30 hover:bg-blue-500/30 transition-colors duration-200 text-sm py-2 px-4 rounded-full group relative">
+                                            <div class="flex items-center gap-2">
+                                                <div class={`skill-icon ${skill.colorClass}`}>
+                                                    <skill.iconComponent />
+                                                </div>
+                                                <span>{skill.name}</span>
+                                            </div>
+                                            {(skill.description ||
+                                                skill.fullName) && (
+                                                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 w-64 text-center">
+                                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" />
+                                                    {skill.fullName && (
+                                                        <div class="font-semibold mb-1">
+                                                            {skill.fullName}
+                                                        </div>
+                                                    )}
+                                                    {skill.description && (
+                                                        <div>
+                                                            {skill.description}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </div>
                                     ))}
                                 </div>
                             </div>
