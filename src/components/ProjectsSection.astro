@@ -3,13 +3,13 @@ import GitHubIcon from './icons/GitHub.astro';
 
 const projects = [
     {
-        title: "E-commerce Platform",
+        title: "CRM para agencia asesora de seguros",
         description:
-            "Plataforma de comercio electrónico completa con React, Next.js y Stripe para pagos.",
-        image: "/ecommerce-platform-concept.png",
-        technologies: ["React", "Next.js", "Stripe", "PostgreSQL"],
-        liveUrl: "#",
-        githubUrl: "#",
+            "Plataforma de gestión de clientes (CRM) y polizas construida con React, Node.js y PostgreSQL.",
+        image: "/crm-platform-concept.png",
+        technologies: ["React", "Node.js", "MongoDB"],
+        liveUrl: null, // URL del proyecto en vivo
+        githubUrl: "https://github.com/rubendaniel9292/North-South",
     },
     {
         title: "Task Management App",
@@ -17,8 +17,8 @@ const projects = [
             "Aplicación de gestión de tareas con autenticación, drag & drop y notificaciones en tiempo real.",
         image: "/task-management-app-interface.png",
         technologies: ["React", "Nest.js", "Socket.io", "MongoDB"],
-        liveUrl: "#",
-        githubUrl: "#",
+        liveUrl: null, // Sin demo pública - solo repositorio
+        githubUrl: "https://github.com/tuusuario/task-management",
     },
     {
         title: "Weather Dashboard",
@@ -26,8 +26,8 @@ const projects = [
             "Dashboard del clima con geolocalización, pronósticos y visualización de datos interactiva.",
         image: "/weather-dashboard.png",
         technologies: ["TypeScript", "Chart.js", "Weather API", "Tailwind"],
-        liveUrl: "#",
-        githubUrl: "#",
+        liveUrl: "https://weather-dashboard-demo.com",
+        githubUrl: "https://github.com/tuusuario/weather-dashboard",
     },
 ];
 ---
@@ -70,14 +70,28 @@ const projects = [
                                     ))}
                                 </div>
                                 <div class="flex gap-2">
-                                    <a 
-                                        href={project.liveUrl}
-                                        class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm font-medium transition-colors"
-                                    >
-                                        Ver proyecto
-                                    </a>
+                                    {project.liveUrl ? (
+                                        <a 
+                                            href={project.liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm font-medium transition-colors"
+                                        >
+                                            Ver proyecto
+                                        </a>
+                                    ) : (
+                                        <button 
+                                            disabled
+                                            class="flex-1 bg-gray-300 text-gray-500 px-4 py-2 rounded-lg text-center text-sm font-medium cursor-not-allowed"
+                                            title="Demo no disponible públicamente"
+                                        >
+                                            Solo repositorio
+                                        </button>
+                                    )}
                                     <a 
                                         href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         class="px-4 py-2 border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
                                     >
                                         <div class="skill-icon-sm icon-github">

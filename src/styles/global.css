@@ -282,7 +282,6 @@ body {
 .skill-icon svg {
   width: 100%;
   height: 100%;
-  fill: currentColor !important;
 }
 
 .skill-icon-sm {
@@ -295,25 +294,6 @@ body {
 .skill-icon-sm svg {
   width: 100%;
   height: 100%;
-  fill: currentColor !important;
-  stroke: currentColor !important;
-}
-
-.skill-icon-sm svg *,
-.skill-icon-sm svg path,
-.skill-icon-sm svg circle,
-.skill-icon-sm svg rect,
-.skill-icon-sm svg polygon {
-  fill: currentColor !important;
-  stroke: currentColor !important;
-}
-
-.skill-icon-sm svg [stroke="none"] {
-  stroke: none !important;
-}
-
-.skill-icon-sm svg [fill="none"] {
-  fill: none !important;
 }
 
 .skill-icon-lg {
@@ -326,58 +306,102 @@ body {
 .skill-icon-lg svg {
   width: 100%;
   height: 100%;
-  fill: currentColor !important;
-  stroke: currentColor !important;
-}
-
-.skill-icon-lg svg *,
-.skill-icon-lg svg path,
-.skill-icon-lg svg circle,
-.skill-icon-lg svg rect,
-.skill-icon-lg svg polygon {
-  fill: currentColor !important;
-  stroke: currentColor !important;
-}
-
-.skill-icon-lg svg [stroke="none"] {
-  stroke: none !important;
-}
-
-.skill-icon-lg svg [fill="none"] {
-  fill: none !important;
 }
 
 /* Colores específicos para cada tecnología/marca */
-.icon-react { color: var(--color-react); }
-.icon-sass { color: var(--color-sass); }
-.icon-bootstrap { color: var(--color-bootstrap); }
-.icon-typescript { color: var(--color-typescript); }
-.icon-javascript { color: var(--color-javascript); }
-.icon-nodejs { 
-  color: #4CAF50;  /* Verde más brillante para mejor visibilidad */
+.icon-react,
+.icon-react svg,
+.icon-react svg * { 
+  color: #61DAFB !important; 
+  fill: #61DAFB !important;
 }
-.icon-nestjs { color: var(--color-nestjs); }
-.icon-git { color: var(--color-git); }
-.icon-github { 
-  color: var(--color-github);
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 4px;
-  padding: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+.icon-sass,
+.icon-sass svg,
+.icon-sass svg * { 
+  color: #CC6699 !important; 
+  fill: #CC6699 !important;
 }
-.icon-copilot { color: var(--color-copilot); }
-.icon-tailwind { color: var(--color-tailwind); }
-.icon-postgresql { 
-  color: #336791;  /* Azul más contrastante para PostgreSQL */
-  background-color: rgba(255, 255, 255, 0.968);
-  border-radius: 3px;
-  padding: 1px;
+
+.icon-bootstrap,
+.icon-bootstrap svg,
+.icon-bootstrap svg * { 
+  color: #7952B3 !important; 
+  fill: #7952B3 !important;
 }
-.icon-typeorm { color: var(--color-typeorm); }
-.icon-linkedin { color: var(--color-linkedin); }
-.icon-lodpdp { color: var(--color-lodpdp); }
+
+.icon-nodejs,
+.icon-nodejs svg,
+.icon-nodejs svg * { 
+  color: #68D391 !important; 
+  fill: #68D391 !important;
+}
+
+.icon-nestjs,
+.icon-nestjs svg,
+.icon-nestjs svg * { 
+  color: #E0234E !important; 
+}
+
+.icon-git,
+.icon-git svg,
+.icon-git svg * { 
+  color: #F05032 !important; 
+  fill: #F05032 !important;
+}
+
+.icon-github,
+.icon-github svg,
+.icon-github svg * { 
+  color: #181717 !important; 
+  fill: #181717 !important;
+}
+
+.icon-tailwind,
+.icon-tailwind svg,
+.icon-tailwind svg * { 
+  color: #38BDF8 !important; 
+}
+
+.icon-postgresql,
+.icon-postgresql svg,
+.icon-postgresql svg * { 
+  color: #4169E1 !important; 
+  fill: #4169E1 !important;
+  background-color: white !important;
+  border-radius: 5px !important;
+}
+
+.icon-typeorm,
+.icon-typeorm svg,
+.icon-typeorm svg * { 
+  color: #FE0803 !important; 
+  fill: #FE0803 !important;
+}
+
+.icon-linkedin,
+.icon-linkedin svg,
+.icon-linkedin svg * { 
+  color: #0A66C2 !important; 
+  fill: #0A66C2 !important;
+}
+
+.icon-lodpdp,
+.icon-lodpdp svg,
+.icon-lodpdp svg * { 
+  color: #FFD700 !important; 
+  fill: #FFD700 !important;
+}
 
 /* Estilos para la sección inicio */
 .indexhome{
     background-image: url('/images/portada1.jpg');
+}
+.skill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
 }
