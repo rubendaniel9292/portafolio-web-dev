@@ -23,7 +23,9 @@ const { title = "Mi Portafolio" } = Astro.props;
     />
   </head>
   <body>
-    <header class="sticky top-0 z-50">
+    <header
+      class="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+    >
       <Navbar client:load />
       <!-- Alternativas según necesidad: -->
       <!-- <Navbar client:load /> -->

@@ -1,109 +1,249 @@
 ---
-import GitHubIcon from './icons/GitHub.astro';
+import GitHubIcon from "./icons/GitHub.astro";
 
 const projects = [
     {
-        title: "CRM para agencia asesora de seguros",
+        title: "CRM National North South",
         description:
             "Plataforma de gestión de clientes (CRM) y polizas construida con React, Node.js y PostgreSQL.",
-        image: "/crm-platform-concept.png",
-        technologies: ["React", "Node.js", "MongoDB"],
+        image: "../images/projects/crm.png",
+        technologies: ["React", "Node.js", "PostgreSQL"],
         liveUrl: null, // URL del proyecto en vivo
         githubUrl: "https://github.com/rubendaniel9292/North-South",
     },
     {
-        title: "Task Management App",
+        title: "National North South",
         description:
-            "Aplicación de gestión de tareas con autenticación, drag & drop y notificaciones en tiempo real.",
-        image: "/task-management-app-interface.png",
-        technologies: ["React", "Nest.js", "Socket.io", "MongoDB"],
-        liveUrl: null, // Sin demo pública - solo repositorio
-        githubUrl: "https://github.com/tuusuario/task-management",
+            "Sitio web oficial para la asesoria de seguros National North South.",
+        image: "../images/projects/landingasesora.jpg",
+        technologies: ["Astro", "Tailwind CSS", "React"],
+        liveUrl: "https://nationalnorthsouth.netlify.app/", // Sin demo pública - solo repositorio
+        githubUrl: "https://github.com/rubendaniel9292/landing-north-south",
     },
     {
-        title: "Weather Dashboard",
+        title: "Red Social Demo",
         description:
-            "Dashboard del clima con geolocalización, pronósticos y visualización de datos interactiva.",
-        image: "/weather-dashboard.png",
-        technologies: ["TypeScript", "Chart.js", "Weather API", "Tailwind"],
-        liveUrl: "https://weather-dashboard-demo.com",
-        githubUrl: "https://github.com/tuusuario/weather-dashboard",
+            "Una red social básica construida con Node.js, Express y MongoDB para practica y aprendizaje.",
+        image: "../images/projects/social.png",
+        technologies: ["Node", "Bootstrap", "React", "MongoDB"],
+        liveUrl: null, // Sin demo pública - solo repositorio
+        githubUrl: "https://github.com/rubendaniel9292/redsocial",
+    },
+    {
+        title: "APP Películas",
+        description:
+            "Aplicación web sencilla para la búsqueda de películas (DEMO solo frontend).",
+        image: "../images/projects/pelis.png",
+        technologies: ["Bootstrap", "React"],
+        liveUrl: "https://rubendaniel9292.github.io/PelisReact/", // Sin demo pública - solo repositorio
+        githubUrl: "https://github.com/rubendaniel9292/PelisReact",
+    },
+    {
+        title: "Consultorio dental",
+        description:
+            "Uno de mis primeros proyectos. Sitio para consultorio medico dental.",
+        image: "../images/projects/medical.png",
+        technologies: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Bootstrap",
+            "GitHub Pages",
+        ],
+        liveUrl: "https://rubendaniel9292.github.io/proyectomedico.github.io/", // Sin demo pública - solo repositorio
+        githubUrl:
+            "https://github.com/rubendaniel9292/proyectomedico.github.io",
+    },
+        {
+        title: "Mi portafolio personal",
+        description:
+            "Primera version de mi sitio web - portafolio personal.",
+        image: "../images/projects/portafolio.jpg",
+        technologies: [
+            "React",
+            "CSS",
+            "Bootstrap",
+            "GitHub Pages",
+        ],
+        liveUrl: null, // Sin demo pública - solo repositorio
+        githubUrl:
+            "https://github.com/rubendaniel9292/portafolioWebReact",
     },
 ];
 ---
 
 <!-- Componente Proyectos -->
-<section id="proyectos" class="py-20 bg-white">
+<section id="proyectos" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2
-                class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12"
-            >
-                Mis Proyectos
-            </h2>
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Mis Proyectos
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Una selección de proyectos que demuestran mis habilidades en
+                    desarrollo web full-stack
+                </p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                 {
                     projects.map((project, index) => (
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200">
-                            <div class="aspect-video overflow-hidden">
-                                <img
-                                    src={
-                                        project.image || "/placeholder.svg"
-                                    }
-                                    alt={project.title}
-                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                />
+                        <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden transform hover:-translate-y-2">
+                            {/* Imagen o Placeholder */}
+                            <div class="relative aspect-video overflow-hidden bg-gradient-to-br from-blue-500 via-teal-500 to-purple-600">
+                                {project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                ) : (
+                                    <div class="w-full h-full flex items-center justify-center relative">
+                                        {/* Patrón de fondo */}
+                                        <div class="absolute inset-0 opacity-20">
+                                            <div class="grid grid-cols-6 gap-2 h-full p-4">
+                                                {[...Array(24)].map((_, i) => (
+                                                    <div class="bg-white/30 rounded-lg" />
+                                                ))}
+                                            </div>
+                                        </div>
+                                        {/* Icono central */}
+                                        <div class="relative z-10 text-white text-center">
+                                            <svg
+                                                class="w-16 h-16 mx-auto mb-3 opacity-80"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z"
+                                                    clip-rule="evenodd"
+                                                />
+                                            </svg>
+                                            <p class="text-sm font-medium">
+                                                Proyecto Web
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+                                {/* Badge superior */}
+                                <div class="absolute top-4 left-4">
+                                    <span class="bg-black/70 text-white px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+                                        {project.technologies[0]}
+                                    </span>
+                                </div>
                             </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+
+                            {/* Contenido */}
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                                     {project.title}
                                 </h3>
-                                <p class="text-gray-600 mb-4">
+                                <p class="text-gray-600 mb-6 leading-relaxed">
                                     {project.description}
                                 </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
+
+                                {/* Tecnologías */}
+                                <div class="flex flex-wrap gap-2 mb-6">
                                     {project.technologies.map((tech) => (
-                                        <span class="px-2 py-1 bg-teal-500/10 text-teal-700 text-xs rounded-full font-medium">
+                                        <span class="px-3 py-1 bg-gradient-to-r from-blue-50 to-teal-50 text-blue-700 text-sm rounded-lg font-medium border border-blue-100">
                                             {tech}
                                         </span>
                                     ))}
                                 </div>
-                                <div class="flex gap-2">
+
+                                {/* Botones */}
+                                <div class="flex gap-3">
                                     {project.liveUrl ? (
-                                        <a 
+                                        <a
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm font-medium transition-colors"
+                                            class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-xl text-center text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                                         >
-                                            Ver proyecto
+                                            <span class="flex items-center justify-center gap-2">
+                                                <svg
+                                                    class="w-4 h-4"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                                    />
+                                                </svg>
+                                                Ver Demo
+                                            </span>
                                         </a>
                                     ) : (
-                                        <button 
-                                            disabled
-                                            class="flex-1 bg-gray-300 text-gray-500 px-4 py-2 rounded-lg text-center text-sm font-medium cursor-not-allowed"
-                                            title="Demo no disponible públicamente"
-                                        >
-                                            Solo repositorio
-                                        </button>
+                                        <div class="flex-1 bg-gradient-to-r from-gray-400 to-gray-500 text-white px-6 py-3 rounded-xl text-center text-sm font-semibold relative overflow-hidden group/btn">
+                                            <span class="flex items-center justify-center gap-2">
+                                                <svg
+                                                    class="w-4 h-4"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                                    />
+                                                </svg>
+                                                Solo Repositorio
+                                            </span>
+                                            <div class="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                                        </div>
                                     )}
-                                    <a 
+                                    <a
                                         href={project.githubUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="px-4 py-2 border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+                                        class="px-6 py-3 border-2 border-gray-200 bg-white hover:border-gray-900 hover:bg-gray-900 hover:text-white rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 group/github"
                                     >
-                                        <div class="skill-icon-sm icon-github">
+                                        <div class="skill-icon-sm icon-github group-hover/github:scale-110 transition-transform">
                                             <GitHubIcon />
                                         </div>
-                                        GitHub
+                                        Código
                                     </a>
                                 </div>
                             </div>
                         </div>
                     ))
                 }
+            </div>
+
+            {/* Call to action */}
+            <div class="text-center mt-16">
+                <div
+                    class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        ></path>
+                    </svg>
+                    ¿Interesado en colaborar?
+                    <a
+                        href="#contacto"
+                        class="underline hover:no-underline transition-all"
+                    >
+                        Hablemos
+                    </a>
+                </div>
             </div>
         </div>
     </div>
