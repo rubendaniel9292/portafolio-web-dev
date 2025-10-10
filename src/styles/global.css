@@ -1,3 +1,6 @@
+/* Importación de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela&display=swap');
+
 /* Estilos globales del portafolio */
 
 /* Scroll suave para navegación por secciones */
@@ -404,4 +407,34 @@ body {
   width: 2rem;
   height: 2rem;
   flex-shrink: 0;
+}
+
+/* === TIPOGRAFÍA PERSONALIZADA === */
+
+/* Aplicar fuente Varela a todos los párrafos */
+p {
+  font-family: 'Varela', sans-serif;
+}
+
+/* Aplicar fuente Ubuntu a todos los títulos y subtítulos */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* Aplicar fuente Ubuntu a elementos de navegación y menús */
+nav, 
+nav a, 
+nav button,span
+.nav-link,
+.menu-item,
+.navbar-brand {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* Aplicar Ubuntu a botones para consistencia */
+button,
+.btn,
+input[type="button"],
+input[type="submit"] {
+  font-family: 'Ubuntu', sans-serif;
 }
