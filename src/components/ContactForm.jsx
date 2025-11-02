@@ -3,7 +3,8 @@ import Turnstile from 'react-turnstile';
 
 const ContactForm = () => {
     // Configuración de Turnstile
-    const siteKey = import.meta.env.VITE_REACT_APP_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
+    //const siteKey = import.meta.env.VITE_REACT_APP_TURNSTILE_SITE_KEY || "0x4AAAAAAB-UUn_Y0IHOlhf8";
+    const siteKey = "0x4AAAAAAB-UUn_Y0IHOlhf8";
 
     const [formData, setFormData] = useState({
         name: '',
@@ -76,7 +77,7 @@ const ContactForm = () => {
                     error: false,
                     message: '¡Mensaje enviado exitosamente! Te contactaré pronto.'
                 });
-                
+
                 // Limpiar formulario
                 setFormData({
                     name: '',
@@ -123,14 +124,13 @@ const ContactForm = () => {
             <div className="mb-6">
                 <h3 className="text-xl font-bold text-white">Envíame un mensaje</h3>
             </div>
-            
+
             {/* Mensaje de estado */}
             {status.message && (
-                <div className={`mb-4 p-3 rounded-md ${
-                    status.success 
-                        ? 'bg-green-500/20 border border-green-400/30 text-green-200' 
+                <div className={`mb-4 p-3 rounded-md ${status.success
+                        ? 'bg-green-500/20 border border-green-400/30 text-green-200'
                         : 'bg-red-500/20 border border-red-400/30 text-red-200'
-                }`}>
+                    }`}>
                     <span className="text-sm font-medium">{status.message}</span>
                 </div>
             )}
@@ -170,7 +170,7 @@ const ContactForm = () => {
                         />
                     </div>
                 </div>
-                
+
                 <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-200 mb-1">
                         Asunto
@@ -187,7 +187,7 @@ const ContactForm = () => {
                         disabled={status.loading}
                     />
                 </div>
-                
+
                 <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-1">
                         Mensaje
@@ -204,7 +204,7 @@ const ContactForm = () => {
                         disabled={status.loading}
                     ></textarea>
                 </div>
-                
+
                 {/* Turnstile Security Verification */}
                 <div className="space-y-2">
                     <label className="block text-sm font-medium text-gray-200 mb-2">
@@ -221,15 +221,14 @@ const ContactForm = () => {
                         />
                     </div>
                 </div>
-                
+
                 <button
                     type="submit"
                     disabled={status.loading || !turnstileToken}
-                    className={`w-full font-semibold py-3 transition-all duration-200 rounded-md flex items-center justify-center gap-2 ${
-                        status.loading || !turnstileToken
-                            ? 'bg-gray-600 text-gray-300 cursor-not-allowed' 
+                    className={`w-full font-semibold py-3 transition-all duration-200 rounded-md flex items-center justify-center gap-2 ${status.loading || !turnstileToken
+                            ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
                             : 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105'
-                    }`}
+                        }`}
                 >
                     {status.loading ? (
                         <>
