@@ -3,8 +3,8 @@ import Turnstile from 'react-turnstile';
 
 const ContactForm = () => {
     // Configuración de Turnstile
-    //const siteKey = import.meta.env.VITE_REACT_APP_TURNSTILE_SITE_KEY || "0x4AAAAAAB-UUn_Y0IHOlhf8";
-    const siteKey = "0x4AAAAAAB-UUn_Y0IHOlhf8";
+   
+    const siteKey = "0x4AAAAAAB-UUn_Y0IHOlhf8" || "1x00000000000000000000AA";
 
     const [formData, setFormData] = useState({
         name: '',
@@ -56,21 +56,20 @@ const ContactForm = () => {
         setStatus({ loading: true, success: false, error: false, message: '' });
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/rubenrivas_17@hotmail.com', {
+            const response = await fetch('/.netlify/functions/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     ...formData,
-                    '_subject': 'Nuevo mensaje desde el portafolio',
-                    '_captcha': 'false',
-                    '_template': 'table',
                     'turnstile-token': turnstileToken
                 })
             });
 
-            if (response.ok) {
+            const result = await response.json();
+
+            if (response.ok && result.success) {
                 setStatus({
                     loading: false,
                     success: true,
@@ -97,7 +96,7 @@ const ContactForm = () => {
                     });
                 }, 5000);
             } else {
-                throw new Error('Error al enviar');
+                throw new Error(result.error || 'Error al enviar');
             }
         } catch (error) {
             setStatus({
