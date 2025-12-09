@@ -8,18 +8,20 @@ exports.handler = async (event) => {
         const data = JSON.parse(event.body);
 
         // Enviar a FormSubmit desde el servidor (sin CORS)
-        const response = await fetch('https://formsubmit.co/ajax/jose_rivas2008@hotmail.com', {
+        const response = await fetch('https://formsubmit.co/ajax/rubenrivas_17@hotmail.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                ...data,
-                '_subject': 'Nueva cotización de seguro desde National North South',
+                name: data.name,
+                email: data.email,
+                subject: data.subject,
+                message: data.message,
+                '_subject': 'Nuevo mensaje desde el portafolio - ' + data.subject,
                 '_captcha': 'false',
-                '_template': 'table',
-                '_cc': 'negocios@nationalnorthsouth.com'
+                '_template': 'table'
             })
         });
 
