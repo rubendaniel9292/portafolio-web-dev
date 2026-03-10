@@ -24,7 +24,7 @@ const ContactForm = () => {
         message: ''
     });
 
-    const [turnstileToken, setTurnstileToken] = useState('');
+    const [turnstileToken, setTurnstileToken] = useState('test-bypass');
     axios.defaults.headers.post['Content-Type'] = 'application/json';
 
     const handleChange = (e) => {
@@ -37,33 +37,8 @@ const ContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validar que Turnstile esté verificado
-        if (!turnstileToken) {
-            setStatus({
-                loading: false,
-                success: false,
-                error: true,
-                message: 'Por favor completa la verificación de seguridad antes de enviar.'
-            });
-            Swal.fire({
-                title: 'Verificación requerida',
-                text: 'Por favor completa la verificación de seguridad antes de enviar el formulario.',
-                icon: 'warning',
-                confirmButtonText: 'Entendido',
-                confirmButtonColor: '#f59e0b'
-            });
-
-            // Limpiar mensaje de validación después de 4 segundos
-            setTimeout(() => {
-                setStatus({
-                    loading: false,
-                    success: false,
-                    error: false,
-                    message: ''
-                });
-            }, 4000);
-            return;
-        }
+        // TURNSTILE DESACTIVADO TEMPORALMENTE PARA PRUEBAS
+        // if (!turnstileToken) { ... }
 
         setStatus({ loading: true, success: false, error: false, message: '' });
 

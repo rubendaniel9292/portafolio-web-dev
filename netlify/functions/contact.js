@@ -14,14 +14,9 @@ export const handler = async (event) => {
             return { statusCode: 400, body: JSON.stringify({ success: false, error: 'Token de seguridad requerido' }) };
         }
 
-        const verifyRes = await axios.post('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-            secret: turnstileSecret,
-            response: turnstileToken
-        }, { validateStatus: () => true });
-
-        if (!verifyRes.data.success) {
-            return { statusCode: 403, body: JSON.stringify({ success: false, error: 'Verificación de seguridad fallida' }) };
-        }
+        // TURNSTILE DESACTIVADO TEMPORALMENTE PARA PRUEBAS
+        // const verifyRes = await axios.post(...)
+        // if (!verifyRes.data.success) { return 403 }
 
         const response = await axios.post('https://formsubmit.co/ajax/rubenrivas_17@hotmail.com', {
             name: data.name,
