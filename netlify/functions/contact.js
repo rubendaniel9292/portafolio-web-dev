@@ -1,4 +1,4 @@
-const https = require('https');
+import https from 'https';
 
 function httpsPost(url, data) {
     return new Promise((resolve, reject) => {
@@ -31,7 +31,7 @@ function httpsPost(url, data) {
     });
 }
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
     // Solo permitir POST
     if (event.httpMethod !== 'POST') {
         return {
