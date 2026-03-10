@@ -27,8 +27,14 @@ export const handler = async (event) => {
             '_captcha': 'false',
             '_template': 'table'
         }, {
-            headers: { 'Accept': 'application/json' }
+            headers: { 'Accept': 'application/json' },
+            validateStatus: () => true
         });
+
+        if (response.status !== 200) {
+            console.error('FormSubmit error:', response.status, JSON.stringify(response.data));
+            return { statusCode: 500, body: JSON.stringify({ success: false, error: `FormSubmit respondió con ${response.status}: ${JSON.stringify(response.data)}` }) };
+        }
 
         return { statusCode: 200, body: JSON.stringify({ success: true, data: response.data }) };
     } catch (error) {
