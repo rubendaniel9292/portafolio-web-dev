@@ -17,7 +17,7 @@ export const handler = async (event) => {
         const verifyRes = await axios.post('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
             secret: turnstileSecret,
             response: turnstileToken
-        });
+        }, { validateStatus: () => true });
 
         if (!verifyRes.data.success) {
             return { statusCode: 403, body: JSON.stringify({ success: false, error: 'Verificación de seguridad fallida' }) };
