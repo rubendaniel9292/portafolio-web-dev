@@ -43,13 +43,17 @@ const ContactForm = () => {
         setStatus({ loading: true, success: false, error: false, message: '' });
 
         try {
-            const response = await fetch('/.netlify/functions/contact', {
+            const response = await fetch('https://formsubmit.co/ajax/rubenrivas_17@hotmail.com', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({
-                    ...formData,
-                    'turnstile-token': turnstileToken,
-                    'Origen': 'Landing Page de portafolio personal'
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
+                    '_subject': `Nuevo mensaje desde el portafolio - ${formData.subject}`,
+                    '_captcha': 'false',
+                    '_template': 'table'
                 })
             });
 
