@@ -24,7 +24,7 @@ const ContactForm = () => {
         message: ''
     });
 
-    const [turnstileToken, setTurnstileToken] = useState('test-bypass');
+    const [turnstileToken, setTurnstileToken] = useState('');
     axios.defaults.headers.post['Content-Type'] = 'application/json';
 
     const handleChange = (e) => {
@@ -37,8 +37,16 @@ const ContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // TURNSTILE DESACTIVADO TEMPORALMENTE PARA PRUEBAS
-        // if (!turnstileToken) { ... }
+        if (!turnstileToken) {
+            Swal.fire({
+                title: 'Verificación requerida',
+                text: 'Por favor completa la verificación de seguridad antes de enviar el formulario.',
+                icon: 'warning',
+                confirmButtonText: 'Entendido',
+                confirmButtonColor: '#f59e0b'
+            });
+            return;
+        }
 
         setStatus({ loading: true, success: false, error: false, message: '' });
 
