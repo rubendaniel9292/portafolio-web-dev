@@ -8,7 +8,7 @@ const ContactForm = () => {
     // En modo desarrollo usa la clave de prueba oficial de Cloudflare (siempre pasa)
     const siteKey = import.meta.env.DEV
         ? "1x00000000000000000000AA"
-        : (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAB-UUn_Y0IHOlhf8");
+        : (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAACohmsw0JBukz0ai");
 
     const [formData, setFormData] = useState({
         name: '',
