@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import Turnstile from 'react-turnstile';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ContactForm = () => {
     // Configuración de Turnstile
-   
-    const siteKey = "0x4AAAAAAB-UUn_Y0IHOlhf8" || "1x00000000000000000000AA";
+    // En modo desarrollo usa la clave de prueba oficial de Cloudflare (siempre pasa)
+    const siteKey = import.meta.env.DEV
+        ? "1x00000000000000000000AA"
+        : (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAB-UUn_Y0IHOlhf8");
 
     const [formData, setFormData] = useState({
         name: '',
@@ -21,6 +25,7 @@ const ContactForm = () => {
     });
 
     const [turnstileToken, setTurnstileToken] = useState('');
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
 
     const handleChange = (e) => {
         setFormData({
@@ -40,6 +45,13 @@ const ContactForm = () => {
                 error: true,
                 message: 'Por favor completa la verificación de seguridad antes de enviar.'
             });
+            Swal.fire({
+                title: 'Verificación requerida',
+                text: 'Por favor completa la verificación de seguridad antes de enviar el formulario.',
+                icon: 'warning',
+                confirmButtonText: 'Entendido',
+                confirmButtonColor: '#f59e0b'
+            });
 
             // Limpiar mensaje de validación después de 4 segundos
             setTimeout(() => {
@@ -58,12 +70,11 @@ const ContactForm = () => {
         try {
             const response = await fetch('/.netlify/functions/contact', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...formData,
-                    'turnstile-token': turnstileToken
+                    'turnstile-token': turnstileToken,
+                    'Origen': 'Landing Page de portafolio personal'
                 })
             });
 
@@ -84,7 +95,17 @@ const ContactForm = () => {
                     subject: '',
                     message: ''
                 });
-                setTurnstileToken(''); // Limpiar token
+
+                Swal.fire({
+                    title: '¡Éxito!',
+                    text: 'Tu mensaje ha sido enviado correctamente. Te contactaré pronto.',
+                    icon: 'success',
+                    confirmButtonText: 'Perfecto',
+                    confirmButtonColor: '#f59e0b',
+                    timer: 5000,
+                    timerProgressBar: true
+                });
+
 
                 // Limpiar mensaje de éxito después de 5 segundos
                 setTimeout(() => {
@@ -94,11 +115,19 @@ const ContactForm = () => {
                         error: false,
                         message: ''
                     });
+                    setTurnstileToken(''); // Limpiar token
+                    setFormData({
+                        'Nombre completo': '',
+                        'Correo electrónico': '',
+                        'Asunto': '',
+                        'Mensaje adicional': ''
+                    });
                 }, 5000);
             } else {
                 throw new Error(result.error || 'Error al enviar');
             }
         } catch (error) {
+            console.error('Error:', error);
             setStatus({
                 loading: false,
                 success: false,
@@ -115,6 +144,13 @@ const ContactForm = () => {
                     message: ''
                 });
             }, 5000);
+            Swal.fire({
+                title: 'Error',
+                text: 'No se pudo enviar tu mensaje. Por favor verifica tu conexión e intenta nuevamente.',
+                icon: 'error',
+                confirmButtonText: 'Intentar de nuevo',
+                confirmButtonColor: '#ef4444'
+            });
         }
     };
 
@@ -127,8 +163,8 @@ const ContactForm = () => {
             {/* Mensaje de estado */}
             {status.message && (
                 <div className={`mb-4 p-3 rounded-md ${status.success
-                        ? 'bg-green-500/20 border border-green-400/30 text-green-200'
-                        : 'bg-red-500/20 border border-red-400/30 text-red-200'
+                    ? 'bg-green-500/20 border border-green-400/30 text-green-200'
+                    : 'bg-red-500/20 border border-red-400/30 text-red-200'
                     }`}>
                     <span className="text-sm font-medium">{status.message}</span>
                 </div>
@@ -225,8 +261,8 @@ const ContactForm = () => {
                     type="submit"
                     disabled={status.loading || !turnstileToken}
                     className={`w-full font-semibold py-3 transition-all duration-200 rounded-md flex items-center justify-center gap-2 ${status.loading || !turnstileToken
-                            ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                            : 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105'
+                        ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                        : 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105'
                         }`}
                 >
                     {status.loading ? (
